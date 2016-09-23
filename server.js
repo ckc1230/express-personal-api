@@ -37,6 +37,15 @@ app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+/*
+
+  Each player should have these attributes:
+    - Number
+    - Name
+    - Position
+    - Age
+
+*/
 
 /*
  * JSON API Endpoints
@@ -45,14 +54,18 @@ app.get('/', function homepage(req, res) {
 app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
-    message: "Welcome to my personal api! Here's what you need to know!",
+    // woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
+    message: "Welcome to Chris' personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/example-username/express_self_api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    baseUrl: "https://glacial-springs-86107.herokuapp.com/", // CHANGE ME (done)
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "POST", path: "/api/sjsharks", description: "Post a Player"}, // CHANGE ME
+      {method: "GET", path: "/api/sjsharks", description: "SJ Sharks Players"},
+      {method: "GET", path: "/api/sjsharks/:id", description: "Get A SJ Sharks Player"},
+      {method: "PUT", path: "/api/sjsharks/:id", description: "Update a SJ Sharks Player"},
+      {method: "DEL", path: "/api/sjsharks/:id", description: "Deleter a SJ Sharks Player"}
     ]
   })
 });
