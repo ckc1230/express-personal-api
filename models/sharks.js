@@ -9,7 +9,6 @@ var SharksSchema = new Schema({
 });
 
 
-
-var Sharks = mongoose.model('SJ Sharks', SharksSchema);
+var Sharks = mongoose.model('Sharks', SharksSchema);
 
 module.exports = Sharks;

@@ -31,8 +31,6 @@ var new_sharks = [
 ];
 
 
-
-
 db.Sharks.create(new_sharks, function(err, shark){
   if (err){
     return console.log("Error:", err);

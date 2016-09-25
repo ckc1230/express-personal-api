@@ -16,12 +16,15 @@
 
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
+
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <h1>San Jose Sharks</h1>
+
+          <h4><a href="/api">Read My API Documentation</a></h4>
 
           <form id="input-form" method="POST" action="/api/sjsharks">
             <input type="text" name="playerName" placeholder="Player Name"> 
@@ -31,8 +34,21 @@
             <input type="submit" name="playerSubmit">
           </form>
 
-          <h4><a href="/api">Read My API Documentation</a></h4>
         </div>
+
+<!--     <ul id="sharkList">
+        </ul> -->
+
+   <!--      <script id="sharks-template" type="text/x-handlebars-template">
+            {{#each sharks}}
+            <hr>
+            <p>
+              <b>{{name}}</b>
+              number: {{number}}
+              <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
+            </p>
+            {{/each}}
+          </script> -->
       </div>
     </div>
   </body>

@@ -93,47 +93,51 @@ app.post('/api/sjsharks', function homepage(req, res) {
   var playerAge = req.body.playerAge;
   var playerPosition = req.body.playerPosition;
 
-  var sharksPlayer = {
+  var sharksPlayer = new db.Sharks ({
     name: playerName,
     number: playerNumber,
     age: playerAge,
     position: playerPosition
-  };
+  });
 
-  db.Sharks.create(sharksPlayer, function(err, shark){
-    if (err){
-      return console.log("Error:", err);
-    }
-    console.log("Created new Sharks Players", shark.name)
+  sharksPlayer.save(function(err, data) {
+     if (err) { console.log(err) };
+     console.log("Created new Sharks Players", sharksPlayer.name)
+     res.json(data);
+
   })
 
- db.Sharks.find({}, function(err, data){
-    if (err) { console.log(err) };
-    res.json(data);
-  });
+ //  db.Sharks.create(sharksPlayer, function(err, shark){
+ //    if (err){
+ //      return console.log("Error:", err);
+ //    }
+ //  })
+
 });
 
 
 
+app.put('/api/sjsharks/:id', function homepage(req, res) {
+  db.Sharks.findOne(({ _id: req.params.id }, function(err, updateShark) {
+    updateShark.name = req.body.playerName;
+    updateShark.number = req.body.playerNumber;
+    updateShark.age = req.body.playerAge;
+    updateShark.position = req.body.playerPosition;   
+    
+    updateShark.save(function (err, data) {
+        res.json(updateShark);
+    })
+    }));
+
+});  
+
+app.delete('/api/sjsharks/:id', function sharksIndex(req, res) {
+  db.Sharks.findOneAndRemove(({ _id: req.params.id }, function(err, deletedShark) {
+      res.json(deletedShark);
+    }));
+});
 
 
-// app.put('/api/sjsharks/:id', function homepage(req, res) {
-//   res.json({
-
-//   });
-// });
-
-// app.delete('/api/sjsharks/:id', function homepage(req, res) {
-//    db.Sharks.findOne({ _id: req.params.id }, function(err, data){
-//     if (err) { console.log(err) };
-//     var deleteShark = data;
-//     var arrayNumber = indexOf(data);
-
-//     db.Sharks.splice(arrayNumber, 1);
-  
-//     res.json(data);
-//   });
-// });
 
 
 /**********
