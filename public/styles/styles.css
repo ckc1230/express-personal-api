@@ -54,8 +54,12 @@ input {
 	width: 375px;
 }
 
+
+
 img {
-	height: 50px;
+	height: 60px;
+	width: 100px;
+	vertical-align: center;
 }
 
 p {
