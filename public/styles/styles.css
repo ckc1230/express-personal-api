@@ -25,11 +25,40 @@ input {
 
 }
 
+.about-player {
+	width: 200px;
+    display: inline-block;
+}
+
+#player-number {
+	width: 120px;
+}
+
+#player-age {
+	width: 120px;
+}
+
+#player-image {
+	width: 345px;
+}
+
+img {
+	height: 50px;
+}
+
 p {
 	padding: 0 50px 10px 30px;
 }
 h4 {
 	text-align: center;
+}
+
+a {
+	color: white;
+}
+
+.btn {
+	margin-right: 50px;
 }
 
 #input-fields {

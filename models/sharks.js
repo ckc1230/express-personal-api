@@ -5,7 +5,8 @@ var SharksSchema = new Schema({
   name: String,
   number: Number,
   age: Number,
-  position: String
+  position: String,
+  image: String
 });
 
 

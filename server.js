@@ -49,7 +49,7 @@ app.get('/api', function api_index(req, res) {
   res.json({
     // woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to Chris' personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express_self_api/README.md", // CHANGE ME
+    documentationUrl: "https://github.com/ckc1230/express-personal-api/blob/master/README.md", // CHANGE ME
     baseUrl: "https://glacial-springs-86107.herokuapp.com/", // CHANGE ME (done)
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
@@ -92,12 +92,15 @@ app.post('/api/sjsharks', function homepage(req, res) {
   var playerNumber = req.body.playerNumber;
   var playerAge = req.body.playerAge;
   var playerPosition = req.body.playerPosition;
+  var playerImage =  req.body.playerImage;   
+
 
   var sharksPlayer = new db.Sharks ({
     name: playerName,
     number: playerNumber,
     age: playerAge,
-    position: playerPosition
+    position: playerPosition,
+    image: playerImage
   });
 
   sharksPlayer.save(function(err, data) {
@@ -122,7 +125,8 @@ app.put('/api/sjsharks/:id', function homepage(req, res) {
     updateShark.name = req.body.playerName;
     updateShark.number = req.body.playerNumber;
     updateShark.age = req.body.playerAge;
-    updateShark.position = req.body.playerPosition;   
+    updateShark.position = req.body.playerPosition;
+    updateShark.image = req.body.playerImage;   
     
     updateShark.save(function (err, data) {
         res.json(updateShark);

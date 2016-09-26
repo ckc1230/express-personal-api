@@ -5,12 +5,12 @@
 
 var db = require('./models/index');
 
-var new_shark = {
-  name: "Joe Pavelski",
-  number: 8,
-  age: 32,
-  position: "Right Wing"
-};
+// var new_shark = {
+//   name: "Joe Pavelski",
+//   number: 8,
+//   age: 32,
+//   position: "Right Wing"
+// };
 
 
 
@@ -19,14 +19,16 @@ var new_sharks = [
     name: "Joe Pavelski",
     number: 8,
     age: 32,
-    position: "Right Wing"
+    position: "Right Wing",
+    image: "https://cbssanfran.files.wordpress.com/2016/05/joe-pavelski-photo-by-thearon-w-henderson-getty-images.jpg?w=720"
   },
 
   { 
     name: "Patrick Marleau",
     number: 12,
     age: 37,
-    position: "Left Wing"
+    position: "Left Wing",
+    image: "http://www.novostimira.com.ua/userfiles/image/ANDREY_IVLIEV/13(312).jpg"
   }
 ];
 
