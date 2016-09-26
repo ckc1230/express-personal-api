@@ -33,6 +33,7 @@ input {
   padding: 5px;
   margin: 5px;
   border: 5px solid teal;
+  width: 180px;
 
 }
 
@@ -50,7 +51,7 @@ input {
 }
 
 #player-image {
-	width: 345px;
+	width: 375px;
 }
 
 img {
@@ -93,7 +94,7 @@ ul {
 	margin: 0 auto;
 }
 #submit-button {
-	width: 345px;
+	width: 375px;
 	font-weight: bold;
 }
 
