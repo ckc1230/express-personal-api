@@ -163,7 +163,7 @@ app.delete('/api/sjsharks/:id', function (req, res) {
     }
   }
 
-  db.Sharks.splice(deleteSharkIndex, 1);
+  db.Sharks.remove(deleteSharkIndex, 1);
   res.json(sharkToDelete);
 
 });

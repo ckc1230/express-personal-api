@@ -57,6 +57,15 @@ a {
 	color: white;
 }
 
+ul {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+#new-shark-form {
+	margin-top: 10px;
+}
+
 .btn {
 	margin-right: 50px;
 }
