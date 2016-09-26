@@ -5,15 +5,6 @@
 
 var db = require('./models/index');
 
-// var new_shark = {
-//   name: "Joe Pavelski",
-//   number: 8,
-//   age: 32,
-//   position: "Right Wing"
-// };
-
-
-
 var new_sharks = [
   { 
     name: "Joe Pavelski",

@@ -58,7 +58,7 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/sjsharks/:id", description: "Get A SJ Sharks Player"},
       {method: "POST", path: "/api/sjsharks", description: "Post a Player"}, // CHANGE ME
       {method: "PUT", path: "/api/sjsharks/:id", description: "Update a SJ Sharks Player"},
-      {method: "DEL", path: "/api/sjsharks/:id", description: "Deleter a SJ Sharks Player"}
+      {method: "DEL", path: "/api/sjsharks/:id", description: "Delete a SJ Sharks Player"}
     ]
   })
 });
@@ -110,15 +110,7 @@ app.post('/api/sjsharks', function homepage(req, res) {
 
   })
 
- //  db.Sharks.create(sharksPlayer, function(err, shark){
- //    if (err){
- //      return console.log("Error:", err);
- //    }
- //  })
-
 });
-
-
 
 app.put('/api/sjsharks/:id', function homepage(req, res) {
   db.Sharks.findOne(({ _id: req.params.id }, function(err, updateShark) {
@@ -132,36 +124,7 @@ app.put('/api/sjsharks/:id', function homepage(req, res) {
         res.json(updateShark);
     })
     }));
-
 });  
-
-// app.delete('/api/sjsharks/:id', function sharksIndex(req, res) {
-//   db.Sharks.findOneAndRemove(({ _id: req.params.id }, function(err, deletedShark) {
-//       res.json(deletedShark);
-//     }));
-// });
-
-
-
-
-// app.delete('/api/sjsharks/:id', function (req, res) {
-//   // get book id from url params (`req.params`)
-//   var sharkId = req.params.id;
- 
-//   var sharkToDelete = db.Sharks.findOne({ _id: sharkId }, function (err, data) {
-//       return data;
-//   })
-//   var deleteSharkIndex;
-//   for (var i = 0; i<db.Sharks.length; i++) {
-//     if (db.Sharks[i] = sharkToDelete) {
-//       deleteSharkIndex = i;
-//     }
-//   }
-
-//   db.Sharks.splice(deleteSharkIndex, 1);
-//   res.json(sharkToDelete);
-
-// });
 
 
 app.delete('/api/sjsharks/:id', function(req, res) {
