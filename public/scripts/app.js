@@ -63,7 +63,7 @@ $(document).ready(function(){
     console.log('New Shark Error!');
   }
 
-  function deleteSharkSuccess() {
+  function deleteSharkSuccess(json) {
     var shark = json;
     var sharkId = shark._id;
     for (var i=0; i < allSharks.length; i++) {

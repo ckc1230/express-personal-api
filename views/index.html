@@ -25,6 +25,7 @@
           <h1>San Jose Sharks</h1>
 
           <h4><a href="/api">Read My API Documentation</a> : <a href="/api/profile">Read My Profile</a></h4>
+        </div>
   </header>
           
   <body>
@@ -40,13 +41,13 @@
             <input id='submit-button' type="submit" name="playerSubmit" value='Submit'>
             </div>
           </form>
+      </div>
 
-
-    <ul id="sharksList">
+      <div id="list-div">
+         <ul id="sharksList">
     
-    </ul>
-
-        </div>
+          </ul>
+      </div>
         <script id="sharks-template" type="text/x-handlebars-template">
             {{#each allsharks}}
             <hr>
@@ -71,7 +72,6 @@
             </p>
             {{/each}}
           </script>
-      </div>
     </div>
   </body>
 </html>
