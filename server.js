@@ -131,12 +131,38 @@ app.put('/api/sjsharks/:id', function homepage(req, res) {
 
 });  
 
-app.delete('/api/sjsharks/:id', function sharksIndex(req, res) {
-  db.Sharks.findOneAndRemove(({ _id: req.params.id }, function(err, deletedShark) {
-      res.json(deletedShark);
-    }));
-});
+// app.delete('/api/sjsharks/:id', function sharksIndex(req, res) {
+//   db.Sharks.findOneAndRemove(({ _id: req.params.id }, function(err, deletedShark) {
+//       res.json(deletedShark);
+//     }));
+// });
 
+
+
+
+app.delete('/api/sjsharks/:id', function (req, res) {
+  // get book id from url params (`req.params`)
+  var sharkId = req.params.id;
+  // // find the index of the book we want to remove
+  // var deleteSharkIndex = db.Sharks.findIndex(function(element, index) {
+  //   return (element._id === parseInt(req.params.id)); //params are strings
+  // });
+  // var sharkToDelete = db.Sharks[deleteSharkIndex];
+
+  var sharkToDelete = db.Sharks.findOne({ _id: sharkId }, function (err, data) {
+      return data;
+  })
+  var deleteSharkIndex;
+  for (var i = 0; i<db.Sharks.length; i++) {
+    if (db.Sharks[i] = sharkToDelete) {
+      deleteSharkIndex = i;
+    }
+  }
+
+  db.Sharks.splice(deleteSharkIndex, 1);
+  res.json(sharkToDelete);
+
+});
 
 
 

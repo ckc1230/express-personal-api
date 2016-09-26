@@ -1,51 +1,83 @@
 console.log("Sanity Check: JS is working!");
+var template;
+var $sharksList;
+var allSharks = [];
 
 $(document).ready(function(){
-// var $sharkList = $('#sharkList')
-// var source = $('#sharks-template').html();;
-// var template = Handlebars.compile(source);
+  $sharksList = $('#sharksList');
+  var source = $('#sharks-template').html();
+  template = Handlebars.compile(source);
 
-// sharkHTML = template({sharks: db.Sharks});
+  $.ajax({
+    method: 'GET',
+    url: '/api/sjsharks',
+    success: handleSuccess,
+    error: handleError
+  })
 
-// $('#sharkList').append(sharkHTML)
-// your code
+  $('#new-shark-form').on('submit', function(e) {
+    e.preventDefault();
+    $.ajax({
+      method:'POST',
+      url: '/api/sjsharks',
+      data: $(this).serialize(),
+      success: newSharkSuccess,
+      error: newSharkError 
+    })
+  })
 
-// $.ajax({
-//   type: "POST",
-//   url: "/books", // this is a "relative" link
-//   data: bookData,
-//   dataType: "json",
-//   success: function(data) {
-//     console.log(data);
-//   }
-// });
+  $sharksList.on('click', '.deleteBtn', function() {
+    console.log("clicked delete button to " + "/api/sjsharks/" + $(this).attr('data-id'));
+    $.ajax({
+      method: 'DELETE',
+      url: '/api/sjsharks/' + $(this).attr('data-id'),
+      success: deleteSharkSuccess,
+      error: deleteSharkError
+    })
+  })
 
+  function render() {
+    $sharksList.empty();
+    var sharksHTML = template({ allsharks: allSharks });
+    $sharksList.append(sharksHTML);
+  };
 
+  function handleSuccess(json) {
+    allSharks = json;
+    render();
+  }
 
+  function handleError(e) {
+    console.log("No good...");
+    $('#sharkList').text("Failed to load the players.")
+  }
 
-// $.ajax({
-//   type: 'DELETE',
-//   url: './api/sjsharks',
-//   dataType: 'json',
-//   success: function(data) {
-//     //celebrate!
-//   }
-// });
+  function newSharkSuccess(json) {
+    $('#new-shark-form input').val('');
+    $('#submit-button').val('Submit');
+    allSharks.push(json);
+    render();
+  }
 
+  function newSharkError() {
+    console.log('New Shark Error!');
+  }
 
-  // $('.sharkList').on('click', '.deleteBtn', function() {
-  //   console.log('clicked delete button to', '/api/books/'+$(this).attr('data-id'));
-  //   $.ajax({
-  //     method: 'DELETE',
-  //     url: '/api/books/'+$(this).attr('data-id'),
-  //     success: deleteBookSuccess,
-  //     error: deleteBookError
-  //   });
-  // });
+  function deleteSharkSuccess() {
+    var shark = json;
+    var sharkId = shark._id;
+    for (var i=0; i < allSharks.length; i++) {
+      if (allSharks[i]._id === sharkId) {
+        allSharks.splice(i,1);
+        break;
+      }
+    }
+    render();
+  }
 
-
-
-
+  function deleteSharkError() {
+    console.log("Uh oh. Didn't delete.");
+  }
 
 
 });

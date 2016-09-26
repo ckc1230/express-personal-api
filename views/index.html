@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>SJ Sharks</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -18,37 +18,43 @@
     <script src="/scripts/app.js"></script>
 
   </head>
-  <body>
+  <header>
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <h1>San Jose Sharks</h1>
 
-          <h4><a href="/api">Read My API Documentation</a></h4>
+          <h4><a href="/api">Read My API Documentation</a> : <a href="/api/profile">Read My Profile</a></h4>
+  </header>
+          
+  <body>
+          <form id="new-shark-form" method="POST" action="/api/sjsharks">
 
-          <form id="input-form" method="POST" action="/api/sjsharks">
+            <div id="input-fields">
             <input type="text" name="playerName" placeholder="Player Name"> 
             <input type="text" name="playerNumber" placeholder="Player Number"> <br>
             <input type="text" name="playerAge" placeholder="Player Age"> 
-            <input type="text" name="playerPosition" placeholder="Player Position"> <br>
-            <input type="submit" name="playerSubmit">
+            <input type="text" name="playerPosition" placeholder="Player Position">
+            <input id='submit-button' type="submit" name="playerSubmit" value='Submit'>
+            </div>
           </form>
 
+
+    <ul id="sharksList">
+        </ul>
+
         </div>
-
-<!--     <ul id="sharkList">
-        </ul> -->
-
-   <!--      <script id="sharks-template" type="text/x-handlebars-template">
-            {{#each sharks}}
+        <script id="sharks-template" type="text/x-handlebars-template">
+            {{#each allsharks}}
             <hr>
             <p>
-              <b>{{name}}</b>
-              number: {{number}}
+              <b>Player:</b> {{name}},
+              <b>Number:</b>  {{number}}, <b>Age:</b> {{age}}, <b>Position:</b> {{position}}
+
               <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
             </p>
             {{/each}}
-          </script> -->
+          </script>
       </div>
     </div>
   </body>
