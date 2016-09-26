@@ -54,7 +54,7 @@ $(document).ready(function(){
 
   function newSharkSuccess(json) {
     $('#new-shark-form input').val('');
-    $('#submit-button').val('Submit');
+    $('#submit-button').val('Add a New Player');
     allSharks.push(json);
     render();
   }
